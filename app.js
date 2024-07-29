@@ -42,10 +42,10 @@ app.use(express.json());
 
 // MySQL connection for GA_login database 
 const gaLoginConnection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Republic_C207',
-    database: 'GA_login'
+    host: 'sql.freedb.tech',
+    user: 'freedb_vendor',
+    password: 'Mm!qsWpGj$Qj7@j',
+    database: 'freedb_vendor'
 });
 
 gaLoginConnection.connect((err) => {
@@ -58,10 +58,10 @@ gaLoginConnection.connect((err) => {
 
 // MySQL connection for vendor database 
 const vendorConnection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Republic_C207',
-    database: 'vendor'
+    host: 'sql.freedb.tech',
+    user: 'freedb_vendor',
+    password: 'Mm!qsWpGj$Qj7@j',
+    database: 'freedb_vendor'
 });
 
 vendorConnection.connect((err) => {
@@ -74,10 +74,10 @@ vendorConnection.connect((err) => {
 
 // MySQL connection for cart database 
 const cartConnection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Republic_C207',
-    database: 'cart'
+    host: 'sql.freedb.tech',
+    user: 'freedb_vendor',
+    password: 'Mm!qsWpGj$Qj7@j',
+    database: 'freedb_vendor'
 });
 
 cartConnection.connect((err) => {
