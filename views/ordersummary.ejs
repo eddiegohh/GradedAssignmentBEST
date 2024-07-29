@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Summary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <%- include('partials/navbar.ejs') %>
+
+    <div class="container mt-4">
+        <h2 class="text-center"><b>Order Summary</b></h2>
+        <p class="text-center">Thank you for your order! Here are the details of your order:</p>
+        <div class="order-summary mt-4">
+            <ul class="list-group">
+                <% cartItems.forEach(function(item) { %>
+                    <li class="list-group-item">
+                        <strong>Canteen:</strong> <%= item.canteen %> <br>
+                        <strong>Vendor:</strong> <%= item.vendor %> <br>
+                        <strong>Food:</strong> <%= item.food %> <br>
+                        <strong>Quantity:</strong> <%= item.quantity %>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+        <div class="text-center mt-4">
+            <p>Estimated preparation time: 10-15 minutes</p>
+            <a href="/order" class="btn btn-secondary">Go Back to Order MORE FOOD</a>
+            <a href="/" class="btn btn-primary">Go Home</a>
+        </div>
+    </div>
+
+    <%- include('partials/footer.ejs') %>
+</body>
+</html>
+
+

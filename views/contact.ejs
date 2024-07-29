@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="/styles.css"> <!-- Ensure your styles.css is included -->
+</head>
+<body>
+    <%- include ('partials/navbar.ejs') %>
+    
+    <div class="container mt-3">
+        <h2>Contact Us</h2>
+        <form action="/submit" method="post">
+            <!-- Dropdown Selection -->
+            <div class="mb-3 mt-3">
+                <label for="reason" class="form-label">Reason for Contacting:</label>
+                <select class="form-control" id="reason" name="reason" required>
+                    <option value="feedback">Feedback</option>
+                    <option value="inquiry">Inquiry</option>
+                    <option value="support">Support</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="name" class="form-label">Name:</label>
+                <input type="name" class="form-control" id="name" placeholder="Enter Name" name="name" required>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" required>
+            </div>
+            
+            <!-- Contact No. and Comments fields -->
+            <div class="mb-3 mt-3">
+                <label for="contact" class="form-label">Contact No:</label>
+                <input type="text" class="form-control" id="contact" placeholder="Enter contact number" name="contact" maxlength="8" required>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="feedbacks" class="form-label">Feedbacks:</label>
+                <textarea class="form-control" id="feedbacks" placeholder="Enter your feedbacks" name="feedbacks" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <%- include ('partials/footer.ejs') %>
+</body>
+</html>
+
+

@@ -1,0 +1,334 @@
+/* Main background color and text styling */
+#background {
+    color: black;
+    text-align: center;
+}
+
+/* THIS PART IS THE NAVBAR.EJS CSS */
+/* Custom styles for navbar links */
+.custom-nav-link {
+    color: #ffffff !important;
+    background-color: #78D261; /* Button color */
+    padding: 10px 15px;
+    border-radius: 5px; /* Slightly rounded corners for better look */
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+}
+
+.custom-nav-link:hover {
+    background-color: black; /* Hover color */
+    text-decoration: none;
+}
+
+/* Styling for active navbar link */
+.custom-nav-link.active {
+    background-color: #0056b3;
+}
+
+/* Ensure navbar items stay on the left */
+.navbar-nav.ml-auto {
+    margin-left: 0 !important;
+}
+
+/* Style for the image button */
+.button-img {
+    height: 40px; /* Adjust size as needed */
+}
+
+.ml-auto {
+    display: flex;
+    align-items: center;
+    margin-left: -100px; /* Shift container to the left */
+}
+
+.btn-img {
+    display: inline-block;
+}
+
+.btn-img img {
+    height: 40px; /* Adjust the size of the image */
+    transition: transform 0.3s ease;
+}
+
+.btn-img img:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Custom styles for dropdown items */
+.dropdown-item {
+    color: #343a40; /* Default text color */
+}
+
+.dropdown-item:hover {
+    background-color: #78D261; /* Hover background color */
+    color: #ffffff; /* Hover text color */
+}
+
+/* END OF NAVBAR LINKS */
+
+/* THIS IS THE FOOTER STYLING */
+/* Footer styling */
+footer {
+    background-color: #343a40; /* Dark background color */
+    color: white;
+}
+
+footer a {
+    color: #78D261; /* Link color */
+}
+
+footer a:hover {
+    color: white; /* Hover link color */
+}
+
+footer .fas, footer .fab {
+    margin-right: 10px;
+}
+
+footer hr {
+    border-top: 1px solid #78D261; /* Light green color for the hr */
+}
+
+footer .text-white {
+    color: #ffffff !important;
+}
+
+/* THIS IS THE END OF THE FOOTER STYLING */
+
+/* THIS IS THE INDEX.EJS CSS */
+
+.carousel-item img {
+    margin: auto;
+    width: 100%;
+    height: 500px; /* Set a fixed height for carousel images */
+    object-fit: cover; /* Ensure images cover the set dimensions */
+}
+
+.carousel {
+    width: 100%; /* Ensure carousel takes up full width */
+    margin: 0; /* Remove default margins */
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card img {
+    border-radius: 10px 10px 0 0;
+    height: 300px; /* Set a fixed height for card images */
+    object-fit: cover; /* Ensure images cover the set dimensions */
+}
+
+.card-body {
+    text-align: center;
+}
+
+.container h2 {
+    margin-bottom: 2rem;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.carousel-caption h5 {
+    font-size: 2rem;
+}
+
+.carousel-caption .btn {
+    background-color: #78D261;
+    border: none;
+}
+
+.carousel-caption .btn:hover {
+    background-color: black;
+}
+
+/* Button primary style for index.ejs */
+.btn-primary {
+    background-color: #78D261;
+    border: #78D261;
+}
+
+.btn-primary:hover {
+    background-color: darkslategray;
+}
+
+/* Custom theme button styling */
+.btn-theme {
+    background-color: #78D261; /* Match theme color */
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-theme:hover {
+    background-color: darkslategray; /* Hover color */
+    color: white;
+}
+
+/* Custom theme button for login page */
+.text-center .btn-theme {
+    background-color: #78D261; /* Ensure consistency with the theme */
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.text-center .btn-theme:hover {
+    background-color: darkslategray; /* Hover color */
+    color: white;
+}
+
+/* THIS IS THE END OF THE INDEX.EJS CSS */
+
+/* THIS IS SUBMITTED.EJS */
+body {
+    padding-top: 70px; /* Adjust this value to match the height of your fixed navbar */
+}
+.thank-you-container {
+    margin-top: 50px;
+    text-align: center;
+}
+.thank-you-container h2 {
+    margin-bottom: 30px;
+}
+.thank-you-container p {
+    font-size: 1.2rem;
+}
+.btn-home {
+    background-color: #78D261;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1rem;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.btn-home:hover {
+    background-color: gray;
+}
+
+/* THIS IS THE END OF THE SUBMITTED.EJS */
+
+/* THIS IS THE ORDER.EJS PAGE */
+/* Order Page Styling */
+.container h2 {
+    color: #343a40; /* Match header color with the theme */
+    margin-bottom: 2rem;
+}
+
+form {
+    background-color: #ffffff; /* White background for form */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+form .form-control, form .form-check-input {
+    border-radius: 5px; /* Slightly rounded corners */
+}
+
+form .btn-primary {
+    background-color: #78D261; /* Match button color with theme */
+    border-color: #78D261;
+    transition: background-color 0.3s ease;
+}
+
+form .btn-primary:hover {
+    background-color: black; /* Hover color */
+    border-color: black;
+}
+
+form .form-label, form .form-check-label {
+    color: #343a40; /* Match label color with theme */
+}
+
+form .form-control:focus, form .form-check-input:focus {
+    border-color: #78D261; /* Focus border color to match theme */
+    box-shadow: 0 0 5px rgba(120, 210, 97, 0.5); /* Green shadow on focus */
+}
+
+.container.mt-4 {
+    padding-top: 70px; /* Adjust padding to avoid overlap with fixed navbar */
+}
+
+/* Add styles for canteen cards */
+.canteen-card {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.canteen-card:hover {
+    transform: scale(1.05);
+}
+
+/* Add styles for vendor cards */
+.vendor-card {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.vendor-card:hover {
+    transform: scale(1.05);
+}
+
+/* Add styles for selected food options */
+.food-option.selected-option {
+    background-color: #78D261; /* Match theme color */
+    color: white;
+    border-radius: 5px;
+}
+
+.food-option {
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.food-option .form-check-input:checked + .form-check-label {
+    color: white;
+}
+
+.card-body:hover {
+    background-color: #78D261;
+}
+
+/* Styles for selected canteen and vendor */
+.selected-canteen .card-body,
+.selected-vendor .card-body {
+    background-color: #78D261;
+    color: white;
+}
+
+/* Styles for selected food option */
+.selected-option {
+    background-color: #78D261;
+    color: white;
+}
+
+/* THIS IS THE END OF THE ORDER.EJS STYLING */ 
+
+
+
+
+
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Navbar Links</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="/logo.png" alt="Logo" style="height: 40px;">
+                Foods @RP
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav mr-auto custom-nav">
+                    <li class="nav-item">
+                        <a class="nav-link custom-nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle custom-nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Login
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/login">Student/Staff</a>
+                            <a class="dropdown-item" href="/login/vendor">Vendor</a>
+                            <a class="dropdown-item" href="/signup">Signup</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link custom-nav-link" href="/contact">Contact us</a>
+                    </li>
+                </ul>
+                <div class="ml-auto">
+                    <a href="#" class="btn-img" data-toggle="modal" data-target="#cartModal">
+                        <img src="/shoppingbagicon.png" alt="Button Image" class="button-img">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cartModalLabel">Shopping Cart</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul id="cart-items-list" class="list-group">
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <a href="/checkout" class="btn btn-primary">Proceed to Checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#cartModal').on('show.bs.modal', function() {
+                fetchCartItems();
+            });
+
+            function fetchCartItems() {
+                fetch('/cart/items')
+                    .then(response => response.json())
+                    .then(data => {
+                        const cartItemsList = document.getElementById('cart-items-list');
+                        cartItemsList.innerHTML = '';
+                        data.forEach(item => {
+                            const listItem = document.createElement('li');
+                            listItem.classList.add('list-group-item');
+                            listItem.textContent = `${item.canteen} - ${item.vendor} - ${item.food}`;
+                            cartItemsList.appendChild(listItem);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching cart items:', error));
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

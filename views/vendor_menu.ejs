@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Menu</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Bootstrap JS bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Include custom styles -->
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <!-- Include navbar partial -->
+    <%- include('partials/navbar.ejs') %>
+
+    <div class="container mt-4">
+        <h2 class="text-center"><b><%= vendor.name %>'s Menu</b></h2>
+        <!-- Button to add a new menu item -->
+        <a href="/vendors/<%= vendor.id %>/menu/new" class="btn btn-primary mb-3">Add New Menu Item</a>
+        <!-- Back button to return to the vendors list -->
+        <a href="/vendors" class="btn btn-secondary mb-3">Back</a>
+        <!-- Table to display menu items -->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% menuItems.forEach(item => { %>
+                    <tr>
+                        <!-- Display menu item name -->
+                        <td><%= item.name %></td>
+                        <td>
+                            <!-- Edit button for each menu item -->
+                            <a href="/vendors/<%= vendor.id %>/menu/<%= item.id %>/edit" class="btn btn-warning">Edit</a>
+                            <!-- Delete form for each menu item -->
+                            <form action="/vendors/<%= vendor.id %>/menu/<%= item.id %>/delete" method="POST" class="d-inline">
+                                <!-- Delete button -->
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Include footer partial -->
+    <%- include('partials/footer.ejs') %>
+</body>
+</html>
+

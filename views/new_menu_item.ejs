@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Menu Item</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Bootstrap JS bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Include custom styles -->
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <!-- Include navbar partial -->
+    <%- include('partials/navbar.ejs') %>
+
+    <div class="container mt-4">
+        <h2 class="text-center"><b>Add New Menu Item</b></h2>
+        <!-- Form to add a new menu item -->
+        <form action="/vendors/<%= vendorId %>/menu" method="POST">
+            <!-- Menu item name input -->
+            <div class="mb-3">
+                <label for="name" class="form-label">Menu Item Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary">Add Menu Item</button>
+            <!-- Back button to return to the vendor menu page -->
+            <a href="/vendors/<%= vendorId %>/menu" class="btn btn-secondary">Back</a>
+        </form>
+    </div>
+
+    <!-- Include footer partial -->
+    <%- include('partials/footer.ejs') %>
+</body>
+</html>
+
+

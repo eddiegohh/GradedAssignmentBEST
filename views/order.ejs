@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <%- include('partials/navbar.ejs') %>
+
+    <div class="container mt-4">
+        <h2 class="text-center"><b>Order Page</b></h2>
+        <p class="text-center"><b>Select your Food Court and food options below</b></p>
+
+        <!-- Conditional rendering based on user role -->
+        <% if (userRole === 'vendor') { %>
+            <!-- Vendor specific content -->
+            <div class="text-center mb-4">
+                <a href="/vendors" class="btn btn-primary">Manage Your Menu</a>
+            </div>
+        <% } %>
+
+        <!-- Canteen Cards -->
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card canteen-card" data-canteen="north">
+                    <img src="/northcanteen.jpg" class="card-img-top" alt="North Canteen">
+                    <div class="card-body">
+                        <h5 class="card-title">North Food Court</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card canteen-card" data-canteen="south">
+                    <img src="/southcanteen.jpg" class="card-img-top" alt="South Canteen">
+                    <div class="card-body">
+                        <h5 class="card-title">South Food Court</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card canteen-card" data-canteen="trcc">
+                    <img src="/trcccanteen.jpg" class="card-img-top" alt="TRCC Canteen">
+                    <div class="card-body">
+                        <h5 class="card-title">Cafe @TRCC</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card canteen-card" data-canteen="lawn">
+                    <img src="/rplawn.jpeg" class="card-img-top" alt="Lawn Canteen">
+                    <div class="card-body">
+                        <h5 class="card-title">Lawn Food Court</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Food Vendor Stalls Section -->
+        <div class="mt-4" id="food-vendor-section" style="display: none;">
+            <h4 class="text-center"><b>Food Vendor Stalls</b></h4>
+            <div class="row" id="vendor-stalls"></div>
+        </div>
+
+        <!-- Food Options Section -->
+        <div class="mt-4" id="food-options-section" style="display: none;">
+            <h4 class="text-center"><b>Food Options</b></h4>
+            <form id="food-options-form" action="/order" method="POST">
+                <div id="food-options" class="row"></div>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary">Add To Cart</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <%- include('partials/footer.ejs') %>
+
+    <!-- Embed JSON data as string in a data attribute -->
+    <div id="data-container" data-vendors='<%= JSON.stringify(vendors).replace(/'/g, '&apos;') %>' data-menu-items='<%= JSON.stringify(menuItems).replace(/'/g, '&apos;') %>'></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Retrieve JSON data from data attributes
+            const dataContainer = document.getElementById('data-container');
+            const vendors = JSON.parse(dataContainer.getAttribute('data-vendors').replace(/&apos;/g, "'"));
+            const menuItems = JSON.parse(dataContainer.getAttribute('data-menu-items').replace(/&apos;/g, "'"));
+
+            // Handle card clicks to show food vendor stalls
+            document.querySelectorAll('.canteen-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    // Remove selected class from all canteen cards
+                    document.querySelectorAll('.canteen-card').forEach(c => c.classList.remove('selected-canteen'));
+                    // Add selected class to the clicked canteen card
+                    this.classList.add('selected-canteen');
+
+                    const canteen = this.getAttribute('data-canteen');
+                    fetchFoodVendors(canteen);
+                });
+            });
+
+            function fetchFoodVendors(canteen) {
+                // Filter vendors based on the selected canteen
+                const vendorStalls = vendors.filter(vendor => vendor.canteen === canteen);
+                const vendorStallsContainer = document.getElementById('vendor-stalls');
+                vendorStallsContainer.innerHTML = '';
+                vendorStalls.forEach(vendor => {
+                    const col = document.createElement('div');
+                    col.classList.add('col-md-4');
+                    col.innerHTML = `
+                        <div class="card vendor-card" data-vendor-id="${vendor.id}">
+                            <div class="card-body">
+                                <h5 class="card-title">${vendor.name}</h5>
+                            </div>
+                        </div>
+                    `;
+                    vendorStallsContainer.appendChild(col);
+                });
+
+                // Show the food vendor stalls section
+                document.getElementById('food-vendor-section').style.display = 'block';
+                document.getElementById('food-options-section').style.display = 'none';
+
+                // Add event listeners to the vendor cards
+                document.querySelectorAll('.vendor-card').forEach(card => {
+                    card.addEventListener('click', function() {
+                        // Remove selected class from all vendor cards
+                        document.querySelectorAll('.vendor-card').forEach(c => c.classList.remove('selected-vendor'));
+                        // Add selected class to the clicked vendor card
+                        this.classList.add('selected-vendor');
+
+                        const vendorId = this.getAttribute('data-vendor-id');
+                        fetchFoodOptions(vendorId);
+                    });
+                });
+            }
+
+            function fetchFoodOptions(vendorId) {
+                // Fetch food options based on the selected vendor
+                const foodList = menuItems[vendorId] || [];
+                const foodOptionsContainer = document.getElementById('food-options');
+                foodOptionsContainer.innerHTML = '';
+                foodList.forEach(food => {
+                    const col = document.createElement('div');
+                    col.classList.add('col-md-4');
+                    col.innerHTML = `
+                        <div class="card food-card" data-food-id="${food.id}">
+                            <div class="card-body">
+                                <h5 class="card-title">${food.name}</h5>
+                            </div>
+                        </div>
+                    `;
+                    foodOptionsContainer.appendChild(col);
+                });
+
+                // Show the food options section
+                document.getElementById('food-options-section').style.display = 'block';
+
+                // Add event listeners to the food cards
+                document.querySelectorAll('.food-card').forEach(card => {
+                    card.addEventListener('click', function() {
+                        // Toggle selected class on food cards
+                        this.classList.toggle('selected-option');
+                        handleFoodSelection(this.getAttribute('data-food-id'));
+                    });
+                });
+            }
+
+            function handleFoodSelection(foodId) {
+                console.log('Selected Food ID:', foodId);
+                // Add more functionality here to handle the selected food
+            }
+
+            // Handle form submission
+            document.getElementById('food-options-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const selectedOptions = document.querySelectorAll('.food-card.selected-option');
+                selectedOptions.forEach(option => {
+                    const foodId = option.getAttribute('data-food-id');
+                    const foodName = option.querySelector('.card-title').innerText;
+                    const vendorCard = document.querySelector('.vendor-card.selected-vendor');
+                    const vendorId = vendorCard.getAttribute('data-vendor-id');
+                    const vendorName = vendorCard.querySelector('.card-title').innerText;
+                    const canteenCard = document.querySelector('.canteen-card.selected-canteen');
+                    const canteenName = canteenCard.querySelector('.card-title').innerText;
+
+                    addToCart(canteenName, vendorName, foodName);
+                });
+            });
+
+            function addToCart(canteen, vendor, food) {
+                fetch('/cart/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ canteen, vendor, food })
+                })
+                .then(response => response.text())
+                .then(data => {
+                    console.log('Success:', data);
+                    alert('Item added to cart');
+                    // Optionally refresh the cart modal content
+                    fetchCartItems();
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            }
+
+            function fetchCartItems() {
+                fetch('/cart/items')
+                    .then(response => response.json())
+                    .then(data => {
+                        const cartItemsList = document.getElementById('cart-items-list');
+                        if(cartItemsList){
+                            cartItemsList.innerHTML = '';
+                            data.forEach(item => {
+                                const listItem = document.createElement('li');
+                                listItem.classList.add('list-group-item');
+                                listItem.textContent = `${item.canteen} - ${item.vendor} - ${item.food}`;
+                                cartItemsList.appendChild(listItem);
+                            });
+                        }
+                    })
+                    .catch(error => console.error('Error fetching cart items:', error));
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

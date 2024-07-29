@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+    <title>RP pre-order service website</title>
+</head>
+
+<body>
+    <%- include('partials/navbar.ejs') %>
+    
+    <div class="container-fluid mt-3 p-0">
+        <div id="background" class="my-5">
+            <div id="demo" class="carousel slide" data-bs-ride="carousel">
+                <!-- Indicators/dots -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+                </div>
+
+                <!-- The slideshow/carousel -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="/southcanteen.jpg" alt="South Foods" class="d-block w-100">
+                        <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
+                            <h5>Republic Poly First Ever Pre-order Service</h5>
+                            <a href="/login" class="btn btn-dark mt-2">Order Now</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/trcccanteen.jpg" alt="TRCC Foods" class="d-block w-100">
+                        <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
+                            <h5>Republic Poly First Ever Pre-order Service</h5>
+                            <a href="/login" class="btn btn-dark mt-2">Order Now</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/northcanteen.jpg" alt="North Foods" class="d-block w-100">
+                        <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
+                            <h5>Republic Poly First Ever Pre-order Service</h5>
+                            <a href="/login" class="btn btn-dark mt-2">Order Now</a>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="/rplawn.jpeg" alt="Lawn Foods" class="d-block w-100">
+                        <div class="carousel-caption d-flex flex-column justify-content-center align-items-center">
+                            <h5>Republic Poly First Ever Pre-order Service</h5>
+                            <a href="/login" class="btn btn-dark mt-2">Order Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Left and right controls/icons -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+  
+   
+    <!-- Carousel Cards -->
+    <div class="container mt-4">
+        <h2 class="text-center"><b>Food Selections Available</b></h2><br><br>
+                    <div class="row">
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <img class="card-img-top" src="/chickenchop.jpg" alt="Northcanteen">
+                                <div class="card-body">
+                                    <h4 class="card-title">North Food Court</h4>
+                                    <p class="card-text">Find delicious and tasty food selections here!!</p>
+                                    <a href="/login" class="btn btn-primary">Click in</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <img class="card-img-top" src="/ytf.jpg" alt="SouthCanteen">
+                                <div class="card-body">
+                                    <h4 class="card-title">South Food Court</h4>
+                                    <p class="card-text">Slurp up this simple and tasty yong tou fu now!!!</p>
+                                    <a href="/login" class="btn btn-primary">Click in</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <img class="card-img-top" src="/bcm.jpg" alt="TRCCcanteen">
+                                <div class="card-body">
+                                    <h4 class="card-title">TRCC Food Court</h4>
+                                    <p class="card-text">Find delicious and tasty food selections here!!</p>
+                                    <a href="/login" class="btn btn-primary">Click in</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <img class="card-img-top" src="/caifan.jpeg" alt="TRCCcanteen">
+                                <div class="card-body">
+                                    <h4 class="card-title">South Food Court</h4>
+                                    <p class="card-text">Find delicious and tasty food selections here!!</p>
+                                    <a href="/login" class="btn btn-primary">Click in</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <img class="card-img-top" src="/korbento.jpg" alt="TRCCcanteen">
+                                <div class="card-body">
+                                    <h4 class="card-title">South Food Court</h4>
+                                    <p class="card-text">Find delicious and tasty food selections here!!</p>
+                                    <a href="/login" class="btn btn-primary">Click in</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <img class="card-img-top" src="/pizza.jpg" alt="TRCCcanteen">
+                                <div class="card-body">
+                                    <h4 class="card-title">South Food Court</h4>
+                                    <p class="card-text">Find delicious and tasty food selections here!!</p>
+                                    <a href="/login" class="btn btn-primary">Click in</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class="card h-100">
+                                <img class="card-img-top" src="/salad.jpg" alt="TRCCcanteen">
+                                <div class="card-body">
+                                    <h4 class="card-title">South Food Court</h4>
+                                    <p class="card-text">Find delicious and tasty food selections here!!</p>
+                                    <a href="/login" class="btn btn-primary">Click in</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-4">
+                            <div class=" card h-100">
+                                <img class="card-img-top" src="/nasilemak.jpeg" alt="Lawn">
+                                <div class="card-body">
+                                    <h4 class="card-title">North Food Court</h4>
+                                    <p class="card-text">Find delicious and tasty food selections here!!</p>
+                                    <a href="/login" class="btn btn-primary">Click in</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+  
+    <%- include('partials/footer.ejs') %>
+</body>
+</html>
+
+
+
+
+
+
+
+
